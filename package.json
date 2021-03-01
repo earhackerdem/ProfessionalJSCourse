@@ -1,0 +1,17 @@
+{
+  "name": "platzi-media-player",
+  "version": "1.0.0",
+  "description": "Proyecto del curso Profesional de JavaScript de la Escuela de JS",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server"
+  },
+  "keywords": [
+    "platzi"
+  ],
+  "author": "Earvin Saúl Pérez Ramos <earhackerdem@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
