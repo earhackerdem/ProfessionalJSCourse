@@ -6,7 +6,9 @@ const muteUnmute =  document.querySelector("#unmuteMute")
 
 const player = new MediaPlayer({
     el:video,
-    plugins:[new AutoPlay()]
+    plugins:[
+        //new AutoPlay()
+    ]
 })
 button.onclick = () => player.play();
 muteUnmute.onclick = () => player.unmuteMute();
