@@ -1,0 +1,75 @@
+<html>
+<head>
+  <title>
+    Function.prototype.call, Function.prototype.apply, Function.prototype.bind
+  </title>
+</head>
+
+<body>
+  <a href="/ejercicios/">Go back</a>
+  <p><em>Abre la consola</em></p>
+  
+  <ul>
+    <li><button class="call-to-action">Aprender</button></li>
+    <li><button class="call-to-action">Aprender Más</button></li>
+    <li><button class="call-to-action">¡Nunca parar de Aprender!</button></li>
+  </ul>
+  
+  <script>
+    function saludar(){
+      console.log(`Hola. Soy ${this.name} ${this.apellido}`)
+    }
+    
+    const saul = {
+      name : "Saul",
+      apellido : "Pérez Ramos"
+    }
+    
+    //Establece this usando call y pasar argumentos a la función
+    saludar.call(saul)
+    
+    function caminar(metros,direccion){
+      console.log(`${this.name} camina ${metros} metros hacia ${direccion}`)
+    }
+    
+    //Establece this usando call y pasar argumentos a la función, los argumentos son pasados uno por uno y con comas
+    caminar.call(saul,400,"norte")
+
+    //Establece this usando apply y pasar argumentos a la función, los argumentos son pasados dentro de un arreglo como segundo parámetro
+    const valores = [800,"sur"]
+    caminar.apply(saul,valores)
+
+    /*
+      Call - coma 
+      Apply  - arreglo
+    */
+   
+    //Con bind, se crea una nueva función nueva con Bind en este caso a mikeSaluda y como parámetro se le pasa a el objeto Mike
+    const mike = {name:"Michael",apellido:"Pérez Ramos"}
+    const mikeSaluda = saludar.bind(mike)
+    mikeSaluda()    
+    
+    //En este caso, a la nueva función, se le pasan dos argumentos
+    const mikeCamina = caminar.bind(mike)
+    mikeCamina(100,'este')
+    //Como se puede ver aqui, los argumentos pueden ser creados al crear la nueva función con bind o bien al ser llamada dicha función
+    //esto es util cuando se tienen los datos de forma parcial y cuando se tengan por completo, se manda a llamar a la función con los
+    //datos restantes
+    const mikeCaminando = caminar.bind(mike,300)
+    mikeCaminando('norte')
+
+    const buttons = document.getElementsByClassName("call-to-action");
+    // buttons.forEach(button =>{
+    //   button.onclick =() => alert("Nunca pares de aprender")
+    // })
+    
+    //NodeList
+
+    Array.prototype.forEach.call(buttons,button => {
+      button.onclick = () => alert('Nunca pares de aprender')
+    })
+
+  </script>
+  
+</body>
+</html>
